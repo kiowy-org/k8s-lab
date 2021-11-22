@@ -62,3 +62,10 @@ kind-worker3         Ready    <none>                 59m   v1.21.1
 ```
 
 Si vous obtenez un résultat comme ci-dessus, félicitation, Kind est installé.
+
+Une dernière chose, afin d'assurer le fonctionnement du cluster, un certain nombre d'addons sont nécessaires.
+Utilisez la commande suivante afin d'installer l'addons metrics-server dans votre cluster.
+
+```shell
+kubectl apply -f metrics-server.yaml
+```
