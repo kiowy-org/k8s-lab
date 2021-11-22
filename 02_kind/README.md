@@ -13,3 +13,8 @@ Installons KIND depuis le binaire :
     sudo mv ./kind /usr/local/bin/kind
 }
 
+Une fois la CLI Kind installée, créez un cluster Kubernetes avec la commande suivante (le fichier `cluster-config.yaml` est dans le dossier `02_kind`) :
+
+```shell
+kind create cluster --config cluster-config.yaml
+```
