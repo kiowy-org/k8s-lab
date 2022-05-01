@@ -108,3 +108,8 @@ Créez un pod kuard avec une limite grâce au fichier `./1_pods/4-kuard-pod-resl
   kubectl port-forward pod/kuard 8080:8080
   ```
 </details>
+
+### Exercice 6
+
+Créez un pod kuard grâce au fichier `./1_pods/5-kuard-pod-vol.yaml`.
+
