@@ -96,4 +96,15 @@ Puis, appliquez les changements grâce à `kubectl apply -f ...`. Affichez les p
 
 ### Exercice 5
 
-Créez un pod kuard avec une limite grâce au fichier ``
+Créez un pod kuard avec une limite grâce au fichier `./1_pods/4-kuard-pod-reslim.yaml`. Accédez au pod kuard sur http://localhost:8080, onglez memory, allouez de la mémoire jusqu'à dépasser la limite. Que constatez vous dans kuard et dans Kubernetes ?
+
+<details>
+  <summary>Aide</summary>
+  
+  ```bash
+  kubectl apply -f ./1_pods/4-kuard-pod-reslim.yaml
+  kubectl get po -w # Laisser la commande s'exécuter
+  # Dans un autre terminal
+  kubectl port-forward pod/kuard 8080:8080
+  ```
+</details>
