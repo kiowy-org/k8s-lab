@@ -20,13 +20,13 @@ Créez un pod appelé `kuard` grâce à `kubectl run`.
   
 ### Exercice 2
 
-Créez un pod kuard depuis le fichier `5-1-kuard-pod.yaml`.
+Créez un pod kuard depuis le fichier `./1_pods/1-kuard-pod.yaml`.
 
 <details><summary>Réponse</summary>
   
   ```bash
     # Si vous obtenez une erreur, vous avez peut être oublié de supprimer le pod kuard de l'exercice 1...
-    kubectl apply -f 5-1-kuard-pod.yaml
+    kubectl apply -f ./1_pods/1-kuard-pod.yaml
   ```
 
 </details>
@@ -53,3 +53,27 @@ Quelques options utiles :
 * `-c` Vous permet de sélectionner le conteneur dans un pod multi-conteneurs.
 * `--previous` vous permet de voir les logs du précedent contenur (dans le cas d'un conteneur qui a été redémarré).
 
+Pour finir, supprimez le conteneur depuis son fichier grâce à la commande `kubectl delete -f ./1_pods/1-kuard-pod.yaml`.
+
+### Exercice 3
+
+Créez un pod kuard avec une liveness probe, puis testez le comportement de Kubernetes en cas de défaillance de la probe.
+
+```bash
+kubectl apply -f ./1_pods/2-kuard-pod-health.yaml
+```
+
+Une fois le pod démarré, exécutez `kubectl get pods -w` afin de surveiller les changements d'état du pod (ne tuez pas la commande).
+
+Dans un autre terminal, utilisez une commande vue plus haut pour avoir accès au pod kuard.
+<details>
+  <summary>Réponse</summary>
+  
+  ```bash
+  # Exécutez cette commande dans un autre terminal
+  kubectl port-forward pod/kuard 8080:8080
+  ```
+  
+</details>
+
+Accédez à http://localhost:8080, dans l'onglet liveness, changez le code de retour de la liveness probe et observez le résultat dans Kubernetes et dans kuard.
