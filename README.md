@@ -113,3 +113,10 @@ Créez un pod kuard avec une limite grâce au fichier `./1_pods/4-kuard-pod-resl
 
 Créez un pod kuard grâce au fichier `./1_pods/5-kuard-pod-vol.yaml`.
 
+## 2. Labels
+
+### Exercice 7
+
+
+
+
