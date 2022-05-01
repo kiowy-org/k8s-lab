@@ -77,3 +77,23 @@ Dans un autre terminal, utilisez une commande vue plus haut pour avoir accès au
 </details>
 
 Accédez à http://localhost:8080, dans l'onglet liveness, changez le code de retour de la liveness probe et observez le résultat dans Kubernetes et dans kuard.
+
+### Exercice 4
+
+Créez un pod kuard avec une request grâce au fichier `./1_pods/3-kuard-pod-resreq.yaml`. Cherchez la commande vous permettant de trouver la QoS du pod.
+
+<details><summary>Réponse</summary>
+  
+  ```bash
+    kubectl apply -f ./1_pods/3-kuard-pod-resreq.yaml
+    kubectl describe pod kuard | grep -i QoS
+  ```
+
+</details>
+
+Modifiez le fichier `./1_pods/3-kuard-pod-resreq.yaml` afin d'indiquer une requête de mémoire à 100Gi (`memory: 100Gi`).
+Puis, appliquez les changements grâce à `kubectl apply -f ...`. Affichez les pods avec `kubectl get pods`, que constatez vous ?
+
+### Exercice 5
+
+Créez un pod kuard avec une limite grâce au fichier ``
