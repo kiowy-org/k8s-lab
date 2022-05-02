@@ -115,4 +115,4 @@ Vérifiez la présence du volume grâce à `kubectl describe`.
 
 
 
-Section suivante, (les labels)[2_labels.md].
+Section suivante, [les labels](2_labels.md).
