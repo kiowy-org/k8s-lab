@@ -65,7 +65,7 @@ Utilisez la commande `kubectl edit svc kuard` afin de modifier le service. Édit
 
 Utilisez ensuite la commande `kubectl get svc kuard` afin d'obtenir le numéro de port ouvert sur les noeuds, et la commande `kubectl get nodes -o wide` afin d'obtenir l'IP publique d'un des noeuds du cluster.
 
-Tentez ensuite d'accéder à http://<node-ip>:<nodeport-port> , rafraichissez la page pour vérifier que le load balancing fonctionne toujours.
+Tentez ensuite d'accéder à http://\<node-ip\>:\<nodeport-port\> , rafraichissez la page pour vérifier que le load balancing fonctionne toujours.
 
 
 ### LoadBalancer
