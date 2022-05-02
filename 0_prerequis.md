@@ -34,7 +34,7 @@ Afin de travailler sans géner les autres, vous allez vous créer un namespace �
 
 1. Choissisez un nom unique (votre prénom par exemple, mettez vous d'accord avec vos homonymes).
 2. Exécutez la commande `kubectl create namespace <prenom>`
-3. Exécutez la commande `kubectl config --current --namespace=<prenom>`
+3. Exécutez la commande `kubectl config set-context --current --namespace=<prenom>`
 
 Voilà, désormais si vous exécutez une commande `kubectl`, celle-ci sera exécutée par défaut dans votre namespace !
 
