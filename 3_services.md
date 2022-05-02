@@ -8,9 +8,9 @@ Ce fichier contient la définition d'un déploiement, que nous verrons dans la s
 <details>
     <summary>Aide</summary>
 
-    ```shell
-    kubectl apply -f ./1_pods/7-kuard-deploy.yaml
-    ```
+```shell
+kubectl apply -f ./1_pods/7-kuard-deploy.yaml
+```
 
 </details>
 
@@ -25,10 +25,10 @@ Que constatez vous ?
 <details>
     <summary>Aide</summary>
 
-    ```shell
-    # Il est possible de faire un port-forward vers un service
-    kubectl port-forward svc/kuard 8080:8080
-    ```
+```shell
+# Il est possible de faire un port-forward vers un service
+kubectl port-forward svc/kuard 8080:8080
+```
 
 </details>
 
