@@ -8,15 +8,15 @@ Utilisez l'option `-l` de `kubectl get` pour vérifier que votre label permet bi
 <details>
     <summary>Aide</summary>
 
-    ```shell
-    kubectl get pods --show-labels # Affiche les labels sur une liste
-    kubectl label pods kuard “canary=true” 
+```shell
+kubectl get pods --show-labels # Affiche les labels sur une liste
+kubectl label pods kuard "canary=true" 
 
-    kubectl get pods -L canary
-    kubectl get pods -l canary=false
+kubectl get pods -L canary
+kubectl get pods -l canary=false
 
-    kubectl label pods kuard “canary-” # Retire un label
-    ```
+kubectl label pods kuard "canary-" # Retire un label
+```
 
 </details>
 
