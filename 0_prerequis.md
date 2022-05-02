@@ -4,7 +4,7 @@ Afin de réaliser les différents exercices de la formation, vous aurez besoins 
 
 Si ce n'est pas déjà le cas, installez les éléments suivants sur votre machine :
 * Git
-* Un éditeur de texte comme `vi` ou `nano` peut suffire, mais pour le confort je vous recommande d'installer (VSCode)[https://code.visualstudio.com/] ou un éditeur léger équivalent (Sublimetext), qui supporte bien la syntaxe yaml. Sachez également que les IDE plus lourds (Intellij de Jetbrains et Eclipse) proposent des plugins très utiles pour travailler avec Kubernetes.
+* Un éditeur de texte comme `vi` ou `nano` peut suffire, mais pour le confort je vous recommande d'installer [VSCode](https://code.visualstudio.com/) ou un éditeur léger équivalent (Sublimetext), qui supporte bien la syntaxe yaml. Sachez également que les IDE plus lourds (Intellij de Jetbrains et Eclipse) proposent des plugins très utiles pour travailler avec Kubernetes.
 
 ### Kubectl
 
@@ -42,8 +42,8 @@ Voilà, désormais si vous exécutez une commande `kubectl`, celle-ci sera exéc
 
 * L'aide mémoire kubectl, qui vous permet notamment d'installer l'autocomplétion : https://kubernetes.io/fr/docs/reference/kubectl/cheatsheet/
 * N'oubliez pas également l'alias `k=kubectl`, pour ne pas taper `kubectl` trop souvent !
-* Pour ceux qui aiment la couleur, (kubecolor)[https://github.com/hidetatz/kubecolor] vous permet de mettre en couleur les commandes kubectl dans votre terminal
-* Pour les fans de GUI : Kubernetes ne dispose plus par défaut d'une interface graphique, je vous conseil le projet (k9s)[https://k9scli.io/] qui est un GUI dans le terminal.
-* Si vous préferez un GUI natif, regardez du coté de (lens)[https://k8slens.dev/]
+* Pour ceux qui aiment la couleur, [kubecolor](https://github.com/hidetatz/kubecolor) vous permet de mettre en couleur les commandes kubectl dans votre terminal
+* Pour les fans de GUI : Kubernetes ne dispose plus par défaut d'une interface graphique, je vous conseil le projet [k9s](https://k9scli.io/) qui est un GUI dans le terminal.
+* Si vous préferez un GUI natif, regardez du coté de [lens](https://k8slens.dev/)
 
-Sections suivante, (les Pods)[1_pods.md].
+Sections suivante, [les Pods](1_pods.md).
