@@ -71,5 +71,3 @@ Tentez ensuite d'accéder à http://<node-ip>:<nodeport-port> , rafraichissez la
 ### LoadBalancer
 
 Modifiez de nouveau le service, en indiquant `LoadBalancer` dans le champ `spec.type`. Attendez quelques minutes, puis observez le résultat de la commande `kubectl get svc kuard`, que constatez vous ? Tentez d'accéder à kuard grâce aux informations obtenues.
-
-Section suivante, (les services)[3_services.md].
