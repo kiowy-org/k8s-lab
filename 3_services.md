@@ -46,7 +46,7 @@ readinessProbe:
         path: /ready
         port: 8080
     periodSeconds: 2
-    initialDelaySecond: 0
+    initialDelaySeconds: 0
     failureThreshold: 3
     successThreshold: 1
 ```
