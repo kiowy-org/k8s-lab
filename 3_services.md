@@ -16,7 +16,7 @@ kubectl apply -f ./1_pods/7-kuard-deploy.yaml
 
 Afin d'exposer ces pods via le réseau, nous allons créer un service. Utilisez la commande `kubectl expose deployment kuard` afin que kubectl créé automatiquement un service.
 
-Vérifiez que le service est bien créé grâce à la commande `kuebctl get svc -o wide`.
+Vérifiez que le service est bien créé grâce à la commande `kubectl get svc -o wide`.
 
 Utilisez la commande `port-forward` vue précedemment afin d'accéder à kuard sur http://localhost:8080 . Dans l'onglet DNS, vérifiez le nom de domaine `kuard`.
 
