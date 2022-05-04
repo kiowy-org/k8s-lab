@@ -98,20 +98,7 @@ kubectl get pods -o wide
 
 ### Exercice 10.1
 
-Démarrez un job seul, via une commande :
-
-```bash
-kubectl run -i oneshot \
---image=gcr.io/kuar-demo/kuard-amd64:blue \
---restart=OnFailure \
--- --keygen-enable \
---keygen-exit-on-complete \
---keygen-num-to-gen=10
-```
-
-Vérifiez la présence de l'objet Job via `kubectl get jobs`, puis des pods via `kubectl get pods`.
-
-Supprimer ce job (`kubectl delete job oneshot`), puis crééez un job via le fichier `./2_replicas_set/4-job-oneshot.yaml`.
+Créez un job via le fichier `./2_replicas_set/4-job-oneshot.yaml`.
 
 Inspectez votre job et vos pods (`describe`, `get` et `logs`).
 
