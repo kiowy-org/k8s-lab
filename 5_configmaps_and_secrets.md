@@ -22,7 +22,7 @@ kubectl get cm my-config -o yaml
 Enfin, créez un pod qui utilise ce configmap.
 
 ```bash
-kubectl apply -f ./3_configmaps_and_secrets/2-kuard-config.yaml
+kubectl apply -f ./3_configmaps_and_secrets/2_kuard_config.yaml
 ```
 
 Vérifiez dans kuard les valeurs présentes dans l'environnement et sur le filesystem.
