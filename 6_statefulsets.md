@@ -47,5 +47,5 @@ cat primer-dataset.json | kubectl exec -it mongo-0 -- mongoimport --db test --co
 Enfin, testez que vous pouvez accéder aux données : 
 
 ```bash
-kubectl exec -it mongo-0 -- mongo test --eval “db.restaurants.find()”
+kubectl exec -it mongo-0 -- mongo test --eval "db.restaurants.find()"
 ```
