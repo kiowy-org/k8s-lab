@@ -6,7 +6,7 @@ Commencez par créer un configmap incluant un fichier de config, et des paramèt
 
 ```bash
 kubectl create configmap my-config \
---from-file=./3_configmaps_and_secrets/1-simple-config.txt \
+--from-file=./3_configmaps_and_secrets/1_simple_config.txt \
 --from-literal=extra-param=extra-value \
 --from-literal=another-param=another-value
 ```
