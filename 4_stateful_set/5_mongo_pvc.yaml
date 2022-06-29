@@ -41,7 +41,7 @@ spec:
       name: mongo
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "Standard"
+      storageClassName: "standard-rwo"
       resources:
         requests:
-          storage: 256Mio
+          storage: "256M"
