@@ -8,14 +8,14 @@ Modifier le fichier d'application de ArgoCD `./common/argocd/<NOM>-application.y
 votre application sur le dossier correspondant à votre namespace.
 
 Dans le dossier correspondant à votre namespace:
-* Créez les manifests YAML correspondants aux fichiers de vos pods.
+* Créez les manifests YAML correspondants aux fichiers de vos ressources.
 * Ajoutez le chemin vers ce fichier au fichier `kustomization.yml`.
 
 ### 2. Créez des ressources Kubernetes
 
-Voici une petite liste de course des instances de ressource K8S que vous devez déployer as code dans votre namespace:
+Voici une petite liste de course des instances de ressource K8S que vous devez déployer **as code** dans votre namespace:
 * 1 ConfigMap `<NOM>-cm` contenant la variable `OWNER_NAME=<NOM>`.
-* 1 Service headless TCP `what-an-url:8080`
+* 1 Service headless TCP qui expose `what-an-url:8080`
 * 1 Deploiement de 2 replicas d'un Pod `Guaranteed` avec:
   *  un conteneur executant l'image:
   ```sh
