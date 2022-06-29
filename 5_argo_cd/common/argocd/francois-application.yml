@@ -1,0 +1,24 @@
+# Simplified template
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: francois
+  namespace: argocd
+spec:
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/kiowy-org/k8s-lab.git # Git Reposition URL
+    targetRevision: HEAD  # Keep Helm
+    path: 5_argo_cd/applications/francois  # Path to Kustomization of your folder
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: francois
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true 
