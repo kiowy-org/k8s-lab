@@ -2,21 +2,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wassim
+  name: correction
   namespace: argocd
 spec:
   project: default
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/kiowy-org/k8s-lab.git # Git Reposition URL
+    repoURL: https://github.com/kiowy-org/k8s-lab.git  # Git Reposition URL
     targetRevision: HEAD  # Keep Helm
-    path: 5_argo_cd/applications/wgaied  # Path to Kustomization of your folder
+    path:  5_argo_cd/correction  # Path to Kustomization of your folder
 
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: wgaied
+    namespace: default
 
   # Sync policy
   syncPolicy:
