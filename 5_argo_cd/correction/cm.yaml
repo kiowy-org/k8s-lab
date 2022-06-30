@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: default-cm
+  namespace: 
+data:
+  owner_name: "jerome"

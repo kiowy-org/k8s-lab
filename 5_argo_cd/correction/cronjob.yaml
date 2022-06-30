@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: unlock
+  namespace: nagib
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: try-unlock
+            image: alpine/curl:3.14
+            imagePullPolicy: IfNotPresent
+            command:
+            - curl 
+            - what-an-url.default:8080
+          restartPolicy: Never
