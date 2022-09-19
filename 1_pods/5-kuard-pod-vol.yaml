@@ -5,8 +5,7 @@ metadata:
 spec:
   volumes:
     - name: "kuard-data"
-      hostPath:
-        path: "/var/lib/kuard"
+      emptyDir: {}      
   containers:
     - image: gcr.io/kuar-demo/kuard-amd64:blue
       name: kuard
