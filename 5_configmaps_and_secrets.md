@@ -61,7 +61,7 @@ kubectl describe secret
 Créez un Pod utilisant ce secret, vérifiez le résultat dans kuard
 
 ```bash
-kubectl apply -f ./3_configmaps_and_secrets/3-kuard-secret.yaml
+kubectl apply -f ./3_configmaps_and_secrets/3_kuard_secret.yaml
 ```
 
 Section suivante, [les Statefulsets](6_statefulsets.md)

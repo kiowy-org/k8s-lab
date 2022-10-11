@@ -13,10 +13,10 @@ Vous devez installer l'outil ligne de commande de kubernetes appelé `kubectl`. 
 Pour valider que l'installation fonctionne, tapez la commande `kubectl version --client`. Vous devez obtenir une sortie similaire à celle-ci :
 
 ```
-Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.3", GitCommit:"816c97ab8cff8a1c72eccca1026f7820e93e0d25", GitTreeState:"clean", BuildDate:"2022-01-25T21:17:57Z", GoVersion:"go1.17.6", Compiler:"gc", Platform:"darwin/amd64"}
+Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.2", GitCommit:"816c97ab8cff8a1c72eccca1026f7820e93e0d25", GitTreeState:"clean", BuildDate:"2022-01-25T21:17:57Z", GoVersion:"go1.17.6", Compiler:"gc", Platform:"darwin/amd64"}
 ```
 
-Assurez vous simplement que GitVersion soit à 1.23.X
+Assurez vous simplement que GitVersion soit à 1.25.X
 
 ### Accès au cluster
 
