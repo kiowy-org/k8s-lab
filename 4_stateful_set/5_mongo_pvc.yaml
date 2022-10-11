@@ -24,8 +24,8 @@ spec:
         - containerPort: 27017
           name: web
         volumeMounts:
-          - name: mongo
-            mountPath: /data/db
+        - name: mongo
+          mountPath: /data/db
       # This container initializes the mongodb, then sleeps.
       - name: init-mongo
         image: mongo:3.4.1
