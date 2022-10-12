@@ -15,8 +15,8 @@ Dans le dossier correspondant à votre namespace:
 
 Voici une petite liste de course des instances de ressource K8S que vous devez déployer **as code** dans votre namespace:
 * 1 ConfigMap `<NOM>-cm` contenant la variable `OWNER_NAME=<NOM>`.
-* 1 Service headless TCP qui expose `what-an-url:8080`
-* 1 Deploiement de 2 replicas d'un Pod `Guaranteed` avec:
+* 1 Service headless TCP qui expose `what-an-url:8080` pour les pods du déploiement `door`.
+* 1 Deploiement `door` de 2 replicas d'un Pod `Guaranteed` avec:
   *  un conteneur executant l'image:
   ```sh
   europe-west1-docker.pkg.dev/k8s-formation/formation-img/unlocker:1.3
