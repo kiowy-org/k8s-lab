@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-with-sa
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccount: default:sa-pod
+      serviceAccountName: sa-pod
+      containers:
+      - image: bitnami/kubectl
+        name: kubectl-get-ns
+        command: ["kubectl",  "get", "ns"]
+      - image: bitnami/kubectl
+        name: kubectl-get-pods
+        command: ["kubectl", "get", "po"]
+      - image: bitnami/kubectl
+        name: kubectl-get-pods-fabrice
+        command: ["kubectl", "get", "po", "-n", "fabrice"]
