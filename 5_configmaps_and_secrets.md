@@ -6,7 +6,7 @@ Commencez par créer un configmap incluant un fichier de config, et des paramèt
 
 ```bash
 kubectl create configmap my-config \
---from-file=./3_configmaps_and_secrets/1_simple_config.txt \
+--from-file=./3_configmaps_and_secrets/1-simple-config.txt \
 --from-literal=extra-param=extra-value \
 --from-literal=another-param=another-value
 ```
@@ -22,7 +22,7 @@ kubectl get cm my-config -o yaml
 Enfin, créez un pod qui utilise ce configmap.
 
 ```bash
-kubectl apply -f ./3_configmaps_and_secrets/2_kuard_config.yaml
+kubectl apply -f ./3_configmaps_and_secrets/2-kuard-config.yaml
 ```
 
 Vérifiez dans kuard les valeurs présentes dans l'environnement et sur le filesystem.
@@ -61,7 +61,7 @@ kubectl describe secret
 Créez un Pod utilisant ce secret, vérifiez le résultat dans kuard
 
 ```bash
-kubectl apply -f ./3_configmaps_and_secrets/3_kuard_secret.yaml
+kubectl apply -f ./3_configmaps_and_secrets/3-kuard-secret.yaml
 ```
 
 Section suivante, [les Statefulsets](6_statefulsets.md)
