@@ -1,3 +1,38 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-job
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: role-job
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - watch
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sa-rolebinding
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: role-job
+subjects:
+- kind: ServiceAccount
+  name: sa-job
+  namespace: default
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -16,5 +51,5 @@ spec:
         name: kubectl-get-pods
         command: ["kubectl", "get", "po"]
       - image: bitnami/kubectl
-        name: kubectl-get-pods-fabrice
-        command: ["kubectl", "get", "po", "-n", "fabrice"]
+        name: kubectl-get-pods-kube-system
+        command: ["kubectl", "get", "po", "-n", "kube-system"]
