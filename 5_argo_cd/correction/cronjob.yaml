@@ -2,9 +2,9 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: unlock
-  namespace: nagib
+  namespace: default
 spec:
-  schedule: "* * * * *"
+  schedule: "*/5 * * * *"
   jobTemplate:
     spec:
       template:
@@ -12,8 +12,14 @@ spec:
           containers:
           - name: try-unlock
             image: alpine/curl:3.14
-            imagePullPolicy: IfNotPresent
+            imagePullPolicy: IfNotPresent 
             command:
             - curl 
             - what-an-url.default:8080
+            env:
+            - name: OWNER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: default-cm
+                  key: owner_name
           restartPolicy: Never
