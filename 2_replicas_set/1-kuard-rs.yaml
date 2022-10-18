@@ -17,3 +17,6 @@ spec:
       containers:
         - name: kuard
           image: "gcr.io/kuar-demo/kuard-amd64:green"
+          resources:
+            requests:
+              cpu: "100m"
