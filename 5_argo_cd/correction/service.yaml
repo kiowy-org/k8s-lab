@@ -4,6 +4,7 @@ metadata:
   name: what-an-url
   namespace: default
 spec:
+  type: NodePort
   selector:
     app-of: default
   ports:
