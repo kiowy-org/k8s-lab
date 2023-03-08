@@ -1,3 +1,4 @@
 namespace: guestbook-staging
 resources:
   - ../../base
+  - ns.yaml

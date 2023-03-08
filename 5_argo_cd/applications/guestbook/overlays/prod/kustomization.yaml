@@ -1,3 +1,4 @@
 namespace: guestbook-prod
 resources:
   - ../../base
+  - ns.yaml
