@@ -2,3 +2,7 @@ namespace: guestbook-prod
 resources:
   - ../../base
   - ns.yaml
+
+replicas:
+- name: frontend
+  count: 5
