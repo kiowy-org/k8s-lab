@@ -19,7 +19,7 @@ Pour valider que l'installation fonctionne, tapez la commande `kubectl version -
 Client Version: version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.1", GitCommit:"e4d4e1ab7cf1bf15273ef97303551b279f0920a9", GitTreeState:"clean", BuildDate:"2022-09-14T19:40:59Z", GoVersion:"go1.19.1", Compiler:"gc", Platform:"darwin/amd64"}
 ```
 
-Assurez vous simplement que GitVersion soit à 1.23.X
+Assurez vous simplement que GitVersion soit à 1.25.X
 
 ## Accès au cluster
 
