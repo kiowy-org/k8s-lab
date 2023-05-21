@@ -1,6 +1,6 @@
-## 4. Controllers
+# 4. Controllers
 
-### Exercice 8
+## Exercice 8
 
 Déployez un ReplicaSet afin de gérer un ensemble de pods identiques.
 
@@ -13,7 +13,7 @@ Utilisez le fichier `./2_replicas_set/1-kuard-rs.yaml` afin de créer le Replica
 kubectl apply -f ./2_replicas_set/1-kuard-rs.yaml
 ```
 
-</details>
+</details><br>
 
 Explorez son fonctionnement via les commandes suivantes :
 
@@ -28,7 +28,7 @@ kubectl get hpa # Vous pouvez également describe cet objet
 kubectl delete rs kuard
 ```
 
-### Exercice 9
+## Exercice 9
 
 Créez un déploiement grâce au fichier `./1_pods/7-kuard-deploy.yaml` et inspectez l'objet créé.
 
@@ -41,7 +41,7 @@ kubectl get deploy -o wide
 kubectl describe deploy kuard
 ```
 
-</details>
+</details><br>
 
 Afin de tester la fonctionalité de Rolling Update, nous allons provoquer un rollout via la commande suivante :
 
@@ -67,7 +67,7 @@ kubectl rollout history deploy kuard
 kubectl rollout resume deploy kuard
 ```
 
-### Exercice 10
+## Exercice 10
 
 Créez un DaemonSet, qui se déploiera sur tous les nodes.
 
@@ -83,8 +83,10 @@ Créez un DaemonSet qui ne se déploiera que sur les nodes disposants du label `
 ```bash
 kubectl apply -f ./2_replicas_set/3-ssd-ds.yaml
 
-kubectl get pods -o wide # Que constatez vous ? Comment régler le problème ?
+kubectl get pods -o wide 
 ```
+
+> Que constatez vous ? Comment régler le problème ? 🧐
 
 <details>
 <summary>Aide</summary>
@@ -96,7 +98,7 @@ kubectl get pods -o wide
 
 </details>
 
-### Exercice 10.1
+## Exercice 10.1
 
 Créez un job via le fichier `./2_replicas_set/4-job-oneshot.yaml`.
 
@@ -125,5 +127,6 @@ curl localhost:8080/memq/server/stats
 kubectl apply -f ./2_replicas_set/10-job-consumer.yaml
 ```
 
+---
 
 Section suivante, [la configuration et les secrets](5_configmaps_and_secrets.md).

@@ -1,6 +1,6 @@
-## 6. Statefulsets
+# 6. Statefulsets
 
-### Exercice 13
+## Exercice 13
 
 Créez un Statefulset MongoDB.
 
@@ -10,6 +10,7 @@ Appliquez ensuite le fichier `./4_stateful_set/2-mongo-service.yaml` afin de cr�
 Vérifiez que les pods démarrent bien dand l'odre. 
 
 Instanciez un pod kuard (`kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:blue`), faites un `port-forward` et tentez une résolution DNS de :
+
 * `mongo`
 * `mongo-1.mongo`
 
@@ -27,8 +28,7 @@ rs.add("mongo-2.mongo:27017");
 
 Que se passe t'il si on scale notre StatefulSet ?
 
-
-### Exercice 14
+## Exercice 14
 
 Nous allons corriger notre statefulset, afin qu'il supporte le scaling.
 
@@ -49,3 +49,7 @@ Enfin, testez que vous pouvez accéder aux données :
 ```bash
 kubectl exec -it mongo-0 -- mongo test --eval "db.restaurants.find()"
 ```
+
+---
+
+Félicitations, Vous avez indépendamment manipulé les briques de base pour déployer une application sur un cluster orchestré par Kubernetes ! Passons aux choses sérieuses 🚀

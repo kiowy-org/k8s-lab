@@ -1,6 +1,6 @@
-## 5. ConfigMaps et Secrets
+# 5. ConfigMaps et Secrets
 
-### Exercice 11
+## Exercice 11
 
 Commencez par créer un configmap incluant un fichier de config, et des paramètres.
 
@@ -19,6 +19,8 @@ kubectl describe cm my-config
 kubectl get cm my-config -o yaml
 ```
 
+> Que constatez-vous ?
+
 Enfin, créez un pod qui utilise ce configmap.
 
 ```bash
@@ -27,7 +29,7 @@ kubectl apply -f ./3_configmaps_and_secrets/2-kuard-config.yaml
 
 Vérifiez dans kuard les valeurs présentes dans l'environnement et sur le filesystem.
 
-### Exercice 12
+## Exercice 12
 
 Créez un secret contenant un certificat, et montez le dans kuard.
 
@@ -56,12 +58,14 @@ kubectl get secret
 kubectl describe secret
 ```
 
-</details>
+</details><br>
 
 Créez un Pod utilisant ce secret, vérifiez le résultat dans kuard
 
 ```bash
 kubectl apply -f ./3_configmaps_and_secrets/3-kuard-secret.yaml
 ```
+
+---
 
 Section suivante, [les Statefulsets](6_statefulsets.md)

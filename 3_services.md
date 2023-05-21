@@ -1,4 +1,4 @@
-## 3. Services
+# 3. Services
 
 Dans cette section, nous allons découvrir les services, et les readiness probes.
 
@@ -12,13 +12,13 @@ Ce fichier contient la définition d'un déploiement, que nous verrons dans la s
 kubectl apply -f ./1_pods/7-kuard-deploy.yaml
 ```
 
-</details>
+</details><br>
 
 Afin d'exposer ces pods via le réseau, nous allons créer un service. Utilisez la commande `kubectl expose deployment kuard` afin que kubectl créé automatiquement un service.
 
 Vérifiez que le service est bien créé grâce à la commande `kubectl get svc -o wide`.
 
-Utilisez la commande `port-forward` vue précedemment afin d'accéder à kuard sur http://localhost:8080 . Dans l'onglet DNS, vérifiez le nom de domaine `kuard`.
+Utilisez la commande `port-forward` vue précedemment afin d'accéder à kuard sur [`http://localhost:8080`](http://localhost:8080). Dans l'onglet DNS, vérifiez le nom de domaine `kuard`.
 
 Que constatez vous ?
 
@@ -32,7 +32,7 @@ kubectl port-forward svc/kuard 8080:8080
 
 </details>
 
-### Readiness probe
+## Readiness probe
 
 Le mécanisme de readiness probe permet d'indiquer à K8S quand envoyer du traffic vers le pod.
 
@@ -55,9 +55,9 @@ Validez la modification (dans vi : `Esc` + `:wq`)
 
 Rendez vous sur le pod kuard, dans l'onglet readiness, changez le code de retour de la readiness probe et vérifiez le comportement sur kubernetes.
 
-(Vous pouvez observer les pods présents dans le load balancing du service via la commane `kubectl get endpoints kuard -w`).
+> Vous pouvez observer les pods présents dans le load balancing du service via la commane `kubectl get endpoints kuard -w`.
 
-### NodePort
+## NodePort
 
 Pour accéder aux pods depuis l'extérieur, on peut utiliser le service de type `NodePort`.
 
@@ -67,11 +67,10 @@ Utilisez ensuite la commande `kubectl get svc kuard` afin d'obtenir le numéro d
 
 Tentez ensuite d'accéder à http://\<node-ip\>:\<nodeport-port\> , rafraichissez la page pour vérifier que le load balancing fonctionne toujours.
 
-
 ### LoadBalancer
 
 Modifiez de nouveau le service, en indiquant `LoadBalancer` dans le champ `spec.type`. Attendez quelques minutes, puis observez le résultat de la commande `kubectl get svc kuard`, que constatez vous ? Tentez d'accéder à kuard grâce aux informations obtenues.
 
-
+---
 
 Section suivante, [les controllers](4_controllers.md)
