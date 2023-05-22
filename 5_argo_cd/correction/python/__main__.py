@@ -129,9 +129,20 @@ print(lock)
 print("\t\t\t" + owner_name + "'s door is LOCKED")
 client_socket.listen(1)
 conn, addr = client_socket.accept()
+conn.send(b'GET / HTTP/1.1\r\nHost:kiowy.com\r\n\r\n')
+response = conn.recv(4096)
+conn.close()
+resp = response.decode()
+if os.getenv("DEBUG") == "True":
+    print(resp)
+
+attacker="someone"
+for line in resp.split("\n"):
+  if "unlocker" in line:
+    attacker = line.removeprefix("unlocker=")
 print("\n\n\n\n\n")
 print(unlock)
-print("\t\t\t" + owner_name + "'s pod is UNLOCKED !")
+print("\t\t  " + owner_name + "'s pod has been UNLOCKED by "+ attacker +" !")
 
 time.sleep(300)
 sys.exit()

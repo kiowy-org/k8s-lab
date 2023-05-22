@@ -16,6 +16,8 @@ spec:
             command:
             - curl 
             - what-an-url.default:8080
+            - -d
+            - "unlocker=$OWNER_NAME"
             env:
             - name: OWNER_NAME
               valueFrom:
