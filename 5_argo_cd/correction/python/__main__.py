@@ -121,12 +121,12 @@ unlock= """
 
 
 owner_name = os.getenv("OWNER_NAME")
-print("----------------------------------------------------------------------------------------------------")
+print("-----------------------------------------------------------------------------------")
 print("\t\t\tWELCOME IN FRONT OF " + owner_name + "\'s door")
-print("----------------------------------------------------------------------------------------------------")
+print("-----------------------------------------------------------------------------------")
 
 print(lock)
-print("\t\t\t" + owner_name + "'s door is LOCKED")
+print("\t\t\t    " + owner_name + "'s door is LOCKED")
 client_socket.listen(1)
 conn, addr = client_socket.accept()
 conn.send(b'GET / HTTP/1.1\r\nHost:kiowy.com\r\n\r\n')
@@ -139,10 +139,10 @@ if os.getenv("DEBUG") == "True":
 attacker="someone"
 for line in resp.split("\n"):
   if "unlocker" in line:
-    attacker = line.removeprefix("unlocker=")
-print("\n\n\n\n\n")
-print(unlock)
-print("\t\t  " + owner_name + "'s pod has been UNLOCKED by "+ attacker +" !")
+    attacker = line.replace("unlocker=","")
 
+print("\n\n\n\n\n")
+print(unlock, flush=True)
+print("\t\t" + owner_name + "'s pod has been UNLOCKED by "+ attacker +" !", flush=True)
 time.sleep(300)
 sys.exit()

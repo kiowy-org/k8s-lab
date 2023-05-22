@@ -13,15 +13,6 @@ spec:
           - name: try-unlock
             image: alpine/curl:3.14
             imagePullPolicy: IfNotPresent 
-            command:
-            - curl 
-            - what-an-url.default:8080
-            - -d
-            - "unlocker=$OWNER_NAME"
-            env:
-            - name: OWNER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: default-cm
-                  key: owner_name
+            command: ["curl"] 
+            args: ["what-an-url.default:8080 -d unlocker=default"]
           restartPolicy: Never

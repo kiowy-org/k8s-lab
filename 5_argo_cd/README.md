@@ -19,7 +19,7 @@ Voici une petite liste de course des instances de ressource K8S que vous devez d
 * 1 Deploiement `door` de 2 replicas d'un Pod `Guaranteed` avec:
   *  un conteneur executant l'image:
   ```sh
-  europe-west1-docker.pkg.dev/k8s-formation/formation-img/unlocker:1.3
+  europe-west1-docker.pkg.dev/k8s-formation/formation-img/unlocker:1.5
   ```
   *  `100m` de puissance de calcul et `128Mi` de mémoire.
   *  un label `app-of=<NOM>`
@@ -27,7 +27,7 @@ Voici une petite liste de course des instances de ressource K8S que vous devez d
 
 Enfin:
 * 1 CronJob qui:
-  * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=$OWNER_NAME"` toutes les minutes.
+  * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=<NOM>"` toutes les minutes.
   * une variable environnement `OWNER_NAME` extraite depuis la configmap `<NOM>-cm`.
 
 ### BONUS - Accéder au dashboard d'ArgoCD
