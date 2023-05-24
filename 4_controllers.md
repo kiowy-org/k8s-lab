@@ -121,10 +121,10 @@ QUEUE_POD=$(kubectl get pods -l app=work-queue,component=queue \
 kubectl port-forward pod/$QUEUE_POD 8080:8080 # Gardez cette commande active !
 
 # Dans un autre terminal, exécutez :
-./2_replicas_set/9-load-queue.sh
+./2_replicas_set/91-load-queue.sh
 curl localhost:8080/memq/server/stats
 
-kubectl apply -f ./2_replicas_set/10-job-consumer.yaml
+kubectl apply -f ./2_replicas_set/92-job-consumer.yaml
 ```
 
 ---
