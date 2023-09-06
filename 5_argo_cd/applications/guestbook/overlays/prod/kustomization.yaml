@@ -5,4 +5,4 @@ resources:
 
 replicas:
 - name: frontend
-  count: 5
+  count: 10
