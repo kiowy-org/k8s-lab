@@ -1,4 +1,0 @@
-resources:
-  - redis-leader.yaml
-  - redis-follower.yaml
-  - frontend.yaml
