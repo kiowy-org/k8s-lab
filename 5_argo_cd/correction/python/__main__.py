@@ -2,6 +2,7 @@ import socket, time, os, sys
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     client_socket.bind(('', 8080))
+    print('Bind succeded, lock exposed on 8080')
 except socket.error as msg:
     print('Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1])
     sys.exit()
