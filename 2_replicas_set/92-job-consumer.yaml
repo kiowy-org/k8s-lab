@@ -19,6 +19,9 @@ spec:
       - name: worker
         image: "gcr.io/kuar-demo/kuard-amd64:1"
         imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
         args:
         - "--keygen-enable"
         - "--keygen-exit-on-complete"
