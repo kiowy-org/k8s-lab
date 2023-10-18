@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: the-door
-        image: europe-west1-docker.pkg.dev/k8s-formation/formation-img/unlocker:1.5
+        image: europe-west1-docker.pkg.dev/k8s-formation/formation-img/unlocker:1.6
         imagePullPolicy: Always
         resources:
           requests:
