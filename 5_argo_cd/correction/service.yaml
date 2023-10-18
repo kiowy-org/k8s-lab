@@ -4,7 +4,7 @@ metadata:
   name: what-an-url
   namespace: default
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app-of: default
   ports:
