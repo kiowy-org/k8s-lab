@@ -1,8 +1,10 @@
+# Install ingress-nginx --> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+# Create the 'guestbook.forma.kiowy.net' A entry to k8s-formation Cloud DNS
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-myservicea
-  namespace: benoit
+  name: ing-guestbook-a
+  namespace: <namespace-a>
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -11,7 +13,7 @@ spec:
   - host: guestbook.forma.kiowy.net
     http:
       paths:
-      - path: /benoit(/|$)(.*)
+      - path: /<namespace-a>(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:
@@ -23,8 +25,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-myserviceb
-  namespace: romain
+  name: ing-guestbook-b
+  namespace: <namespace-b>
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -33,7 +35,7 @@ spec:
   - host: guestbook.forma.kiowy.net
     http:
       paths:
-      - path: /romain(/|$)(.*)
+      - path: /<namespace-b>(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:
