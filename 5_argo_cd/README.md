@@ -18,7 +18,7 @@ Voici une petite liste de course des instances de ressource K8S que vous devez d
 
 Enfin:
 * 1 CronJob qui:
-  * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=<NOM>"` toutes les minutes.
+  * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=$OWNER_NAME"` toutes les minutes.
   * une variable environnement `OWNER_NAME` extraite depuis la configmap `<NOM>-cm`.
 
 ### 2. Mise en place de la synchronisation
