@@ -27,7 +27,7 @@ Une fois la cli `kubectl` installé, vous devez lui indiquer comment se connecte
 
 Vous devez indiquer à kubectl à minima l'adresse du cluster, ainsi que les informations d'identification. Pour cela, récupérez le fichier de configuration (`config`) donné lors de la formation. Vous devrez ensuite copier ce fichier dans le dossier `$HOME/.kube/`. 
 
-Une fois copié, vous devez donc avoir le fichier présent au chemin suivant : `$HOME/.kube/config`.
+Une fois copié, vous devez donc avoir le fichier présent au chemin suivant : `$HOME/.kube/config`. **ATTENTION** `config` est le nom du fichier, sans aucune extension.
 
 Vérifiez que votre accès fonctionne via la commande `kubectl get ns`. Vous devriez voir une liste apparaitre.
 
