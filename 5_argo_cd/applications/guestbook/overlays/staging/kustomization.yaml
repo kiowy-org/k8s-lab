@@ -2,3 +2,7 @@ namespace: guestbook-staging
 resources:
   - ../../base
   - ns.yaml
+
+replicas:
+  - name: frontend
+    count: 6
