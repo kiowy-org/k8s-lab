@@ -28,7 +28,7 @@ Enfin:
 * Deployer l'architecture via `kubectl apply -k .`.
 
 > [!tip]
-> Documetation de [Kustomize](https://kustomize.io/)
+> Documentation de [Kustomize](https://kustomize.io/)
 
 ### BONUS - Accéder au dashboard d'ArgoCD
 
