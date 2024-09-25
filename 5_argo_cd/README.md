@@ -21,14 +21,14 @@ Enfin:
   * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=$OWNER_NAME"` toutes les minutes.
   * une variable environnement `OWNER_NAME` extraite depuis la configmap `<NOM>-cm`.
 
-### 2. Mise en place de la synchronisation
+### 2. Packaging via Kustomize
 
-Modifier le fichier d'application de ArgoCD `./common/argocd/<NOM>-application.yml` pour pointer la synchronisation de
-votre application sur le dossier correspondant à votre namespace.
+* Créez les manifests YAML correspondants aux fichiers de la partie 1.
+* Créez un fichier `kustomization.yml` et listez y les fichiers du dossier.
+* Deployer l'architecture via `kubectl apply -k .`.
 
-Dans le dossier correspondant à votre namespace:
-* Créez les manifests YAML correspondants aux fichiers de vos ressources.
-* Ajoutez le chemin vers ce fichier au fichier `kustomization.yml`.
+> [!tip]
+> Documetation de [Kustomize](https://kustomize.io/)
 
 ### BONUS - Accéder au dashboard d'ArgoCD
 
