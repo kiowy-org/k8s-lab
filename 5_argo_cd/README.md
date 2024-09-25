@@ -29,10 +29,3 @@ Enfin:
 
 > [!tip]
 > Documentation de [Kustomize](https://kustomize.io/)
-
-### BONUS - Accéder au dashboard d'ArgoCD
-
-Utiliser le port-forward sur le service `argocd-server` du namespace `argod` port `8080` vers `443`:
-```sh
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-```
