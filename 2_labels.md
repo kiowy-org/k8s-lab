@@ -40,7 +40,7 @@ Effectuer ensuite les manipulations suivantes en utilisant une seule commande pa
 5. Affichez les différentes valeurs du label `app` de chaque pods dans une colonne dédié du `kubectl get` ( option `-L`).
 
 > Avant de changer de section, supprimez tous les pods créer durant cet exercice.
-> (en 2 commmandes maximum 😉)
+> (en une commmande seulement 😉)
 
 ---
 
