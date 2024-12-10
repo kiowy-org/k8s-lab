@@ -43,13 +43,13 @@ Ajoutez le code suivant (au même niveau que l'entrée `image`).
 
 ```yaml
 readinessProbe:
-    httpGet:
-        path: /ready
-        port: 8080
-    periodSeconds: 2
-    initialDelaySeconds: 0
-    failureThreshold: 3
-    successThreshold: 1
+  httpGet:
+    path: /ready
+    port: 8080
+  periodSeconds: 2
+  initialDelaySeconds: 0
+  failureThreshold: 3
+  successThreshold: 1
 ```
 
 Validez la modification (dans vi : `Esc` + `:wq`)
