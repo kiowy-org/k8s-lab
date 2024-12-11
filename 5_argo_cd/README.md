@@ -1,6 +1,6 @@
 # TP final 
 
-Créez les ressources nécéssaire au déploiement de l'application `unlocker` dans votre namespace.
+Créez les ressources nécessaires au déploiement de l'application `unlocker` dans votre namespace.
 
 ## 1. Créez des ressources Kubernetes
 
