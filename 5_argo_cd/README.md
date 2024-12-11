@@ -1,8 +1,8 @@
-## ArgoCD - Déploiement automatisé
+# TP final 
 
-Automatiser le déploiement des éléments d'infrastructures Kubernetes via un dépôt GitHub.
+Créez les ressources nécéssaire au déploiement de l'application `unlocker` dans votre namespace.
 
-### 1. Créez des ressources Kubernetes
+## 1. Créez des ressources Kubernetes
 
 Voici une petite liste de course des instances de ressource K8S que vous devez déployer **as code** dans votre namespace:
 * 1 ConfigMap `<NOM>-cm` contenant la variable `OWNER_NAME=<NOM>`.
@@ -21,7 +21,7 @@ Enfin:
   * execute la commande `curl what-an-url.<NOM_DE_VOTRE_OPPOSANT>:8080 -d "unlocker=$OWNER_NAME"` toutes les minutes.
   * une variable environnement `OWNER_NAME` extraite depuis la configmap `<NOM>-cm`.
 
-### 2. Packaging via Kustomize
+## 2. Packaging via Kustomize
 
 * Créez les manifests YAML correspondants aux fichiers de la partie 1.
 * Créez un fichier `kustomization.yml` et listez y les fichiers du dossier.
