@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   labels:
     app: kuard
-    ver: "1"
     env: prod
   name: kuard
 spec:
@@ -11,14 +10,12 @@ spec:
   selector:
     matchLabels:
       app: kuard
-      ver: "1"
       env: prod
   strategy: {}
   template:
     metadata:
       labels:
         app: kuard
-        ver: "1"
         env: prod
     spec:
       containers:
