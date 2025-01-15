@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - argocd/argocd-application.yml
   - argocd/correction-application.yaml
-  - argocd/errors.yaml
+  # - argocd/errors.yaml
   - argocd/guestbook.yaml
