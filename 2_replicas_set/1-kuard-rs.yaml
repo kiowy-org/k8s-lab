@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
         - name: kuard
-          image: "gcr.io/kuar-demo/kuard-amd64:green"
+          image: "europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:green"

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: "gcr.io/kuar-demo/kuard-amd64:1"
+        image: "europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:1"
         imagePullPolicy: Always
         resources:
           requests:

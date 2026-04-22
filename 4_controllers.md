@@ -46,7 +46,7 @@ kubectl describe deploy kuard
 Afin de tester la fonctionalité de Rolling Update, nous allons provoquer un rollout via la commande suivante :
 
 ```bash
-kubectl set image deploy kuard kuard-amd64=gcr.io/kuar-demo/kuard-amd64:green
+kubectl set image deploy kuard kuard-amd64=europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:green
 ```
 
 Observez via `kubectl get pods -w` le rollout en cours.
@@ -56,13 +56,13 @@ Continuez avec les commande suivante afin de voir ce qui se passe en cas d'erreu
 ```bash
 kubectl get rs
 
-kubectl set image deploy kuard kuard-amd64=gcr.io/kuar-demo/kuard-amd64:red
+kubectl set image deploy kuard kuard-amd64=europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:red
 kubectl rollout status deploy kuard
 kubectl rollout history deploy kuard
 kubectl rollout undo deploy kuard
 
 kubectl rollout pause deploy kuard
-kubectl set image deploy kuard kuard-amd64=gcr.io/kuar-demo/kuard-amd64:purple
+kubectl set image deploy kuard kuard-amd64=europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:purple
 kubectl rollout history deploy kuard
 kubectl rollout resume deploy kuard
 ```

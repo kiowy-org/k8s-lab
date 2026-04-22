@@ -9,7 +9,7 @@ Appliquez ensuite le fichier `./4_stateful_set/2-mongo-service.yaml` afin de cr�
 
 Vérifiez que les pods démarrent bien dand l'odre. 
 
-Instanciez un pod kuard (`kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:blue`), faites un `port-forward` et tentez une résolution DNS de :
+Instanciez un pod kuard (`kubectl run kuard --image=europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:blue`), faites un `port-forward` et tentez une résolution DNS de :
 
 * `mongo`
 * `mongo-1.mongo`

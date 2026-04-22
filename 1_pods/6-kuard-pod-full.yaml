@@ -9,7 +9,7 @@ spec:
         server: my.nfs.server.local
         path: "/exports"
   containers:
-    - image: gcr.io/kuar-demo/kuard-amd64:blue
+    - image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:blue
       name: kuard
       ports:
         - containerPort: 8080
