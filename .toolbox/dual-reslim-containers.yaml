@@ -4,7 +4,7 @@ metadata:
   name: kuard-nginx
 spec:
   containers:
-  - image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:blue
+  - image:  europe-west1-docker.pkg.dev/k8s-formation/k8s-lab/kuard:blue
     name: kuard
     resources: 
       requests:

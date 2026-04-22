@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: test-container
-      image: europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:blue
+      image:  europe-west1-docker.pkg.dev/k8s-formation/k8s-lab/kuard:blue
       imagePullPolicy: Always
       command:
         - "/kuard"

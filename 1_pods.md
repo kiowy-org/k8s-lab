@@ -7,7 +7,7 @@ Dans cette sections, nous allons manipuler le composant de base de Kubernetes : 
 Créez un pod appelé `kuard` grâce à `kubectl run`.
 
 ```bash
-kubectl run kuard --image=europe-west1-docker.pkg.dev/polytech-dijon/polytech-dijon/kuard:blue
+kubectl run kuard --image= europe-west1-docker.pkg.dev/k8s-formation/k8s-lab/kuard:blue
 kubectl get pods
 kubectl delete pod/kuard
 ```
