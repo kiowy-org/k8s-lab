@@ -17,11 +17,13 @@ spec:
     spec:
       containers:
       - name: worker
-        image: "europe-west1-docker.pkg.dev/k8s-formation/k8s-lab/kuard:1"
+        image: "europe-west1-docker.pkg.dev/k8s-formation/k8s-lab/kuard:blue"
         imagePullPolicy: Always
         resources:
           requests:
             cpu: 100m
+        command: 
+        - /kuard
         args:
         - "--keygen-enable"
         - "--keygen-exit-on-complete"
