@@ -20,6 +20,8 @@ spec:
         env:
         - name: GET_HOSTS_FROM
           value: "dns"
+        - name: ENV
+          value: staging
         resources:
           requests:
             cpu: 100m
