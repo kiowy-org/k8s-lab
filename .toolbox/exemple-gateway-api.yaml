@@ -1,0 +1,560 @@
+# GKE Gateway API need to be enabled
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: gateway
+  labels:
+    demo: gateway
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gw-formation
+  namespace: gateway
+  labels:
+    demo: gateway
+spec:
+  gatewayClassName: gke-l7-global-external-managed
+  listeners:
+  - name: http
+    protocol: HTTP
+    port: 80
+    hostname: "*.forma.kiowy.net"
+    allowedRoutes:
+      namespaces:
+        from: All
+#  - name: https
+#    protocol: HTTPS
+#    port: 443
+#    hostname: foo.example.com
+#    tls:
+#      certificateRefs:
+#      - kind: Secret
+#        group: "*.forma.kiowy.net."
+#        name: wildcard-forma-kiowy-net
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: test
+  namespace: default
+  labels:
+    demo: gateway
+spec:
+  parentRefs:
+  - name: gw-formation
+    namespace: gateway
+  hostnames:
+  - "test.forma.kiowy.net"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: test
+      port: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: page
+  namespace: default
+  labels:
+    demo: gateway
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Gateway API Demo</title>
+      <style>
+        :root {
+          --bg: #0f172a;
+          --panel: #111827;
+          --panel-2: #1f2937;
+          --border: #334155;
+          --text: #e5eefb;
+          --muted: #94a3b8;
+          --primary: #06b6d4;
+          --primary-soft: rgba(6, 182, 212, 0.12);
+          --success: #22c55e;
+          --success-soft: rgba(34, 197, 94, 0.12);
+          --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+          --radius: 18px;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html, body {
+          margin: 0;
+          padding: 0;
+          min-height: 100%;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          background: linear-gradient(180deg, #0b1220 0%, var(--bg) 100%);
+          color: var(--text);
+        }
+
+        body {
+          padding: 32px 20px;
+          overflow-x: hidden;
+        }
+
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.08), transparent 22%),
+            radial-gradient(circle at 85% 25%, rgba(34, 197, 94, 0.05), transparent 18%),
+            radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.04), transparent 20%);
+          animation: ambientShift 16s ease-in-out infinite;
+        }
+
+        .container {
+          max-width: 980px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+          animation: fadeUp 0.9s ease-out;
+        }
+
+        .header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          margin-bottom: 24px;
+          flex-wrap: wrap;
+        }
+
+        .brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+        }
+
+        .brand-badge {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          display: grid;
+          place-items: center;
+          background: var(--primary-soft);
+          border: 1px solid rgba(6, 182, 212, 0.3);
+          color: #67e8f9;
+          font-weight: 800;
+          box-shadow: 0 0 0 rgba(6, 182, 212, 0.0);
+          animation: badgePulse 3.2s ease-in-out infinite;
+        }
+
+        .tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          border-radius: 999px;
+          background: var(--success-soft);
+          border: 1px solid rgba(34, 197, 94, 0.25);
+          color: #bbf7d0;
+          font-size: 0.95rem;
+          font-weight: 600;
+          animation: softFloat 4.5s ease-in-out infinite;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--success);
+          box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+          animation: pulseDot 1.8s ease-in-out infinite;
+        }
+
+        .hero {
+          background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.96));
+          border: 1px solid var(--border);
+          border-radius: 24px;
+          padding: 32px;
+          box-shadow: var(--shadow);
+          margin-bottom: 22px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero::before {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: inherit;
+          padding: 1px;
+          background: linear-gradient(120deg, rgba(6, 182, 212, 0.0), rgba(6, 182, 212, 0.35), rgba(34, 197, 94, 0.0));
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          opacity: 0.8;
+          animation: borderSweep 6s linear infinite;
+          pointer-events: none;
+        }
+
+        h1 {
+          margin: 0 0 14px;
+          font-size: clamp(2rem, 4vw, 3.4rem);
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+        }
+
+        .accent {
+          color: #67e8f9;
+          text-shadow: 0 0 18px rgba(103, 232, 249, 0.14);
+        }
+
+        .lead {
+          margin: 0;
+          max-width: 64ch;
+          color: var(--muted);
+          font-size: 1.05rem;
+          line-height: 1.7;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.25fr 0.75fr;
+          gap: 20px;
+          margin-top: 28px;
+        }
+
+        .card {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 20px;
+          transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+          animation: cardRise 0.8s ease-out both;
+        }
+
+        .card:hover {
+          transform: translateY(-4px);
+          border-color: rgba(103, 232, 249, 0.32);
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+        }
+
+        .card h2 {
+          margin: 0 0 12px;
+          font-size: 1rem;
+          color: #cbd5e1;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+        }
+
+        .status-list {
+          display: grid;
+          gap: 12px;
+        }
+
+        .status-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 14px 16px;
+          border-radius: 14px;
+          background: var(--panel-2);
+          border: 1px solid rgba(148, 163, 184, 0.12);
+          transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .status-item:hover {
+          transform: translateX(4px);
+          border-color: rgba(103, 232, 249, 0.2);
+          background: #233044;
+        }
+
+        .status-item span {
+          color: var(--muted);
+        }
+
+        .status-item strong {
+          color: var(--text);
+        }
+
+        .ok {
+          color: #86efac;
+          font-weight: 700;
+        }
+
+        .stat {
+          font-size: 2.2rem;
+          font-weight: 800;
+          letter-spacing: -0.04em;
+          margin: 0;
+          color: var(--text);
+          animation: softGlow 3.8s ease-in-out infinite;
+        }
+
+        .subtle {
+          color: var(--muted);
+          line-height: 1.6;
+          margin: 8px 0 0;
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+
+        .mini {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 20px;
+          transition: transform 0.25s ease, border-color 0.25s ease;
+          animation: cardRise 1s ease-out both;
+        }
+
+        .mini:hover {
+          transform: translateY(-3px);
+          border-color: rgba(103, 232, 249, 0.24);
+        }
+
+        .mini-title {
+          margin: 0 0 10px;
+          font-size: 0.95rem;
+          color: #cbd5e1;
+          font-weight: 700;
+        }
+
+        .mini p {
+          margin: 0;
+          color: var(--muted);
+          line-height: 1.65;
+        }
+
+        code {
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+          font-size: 0.92em;
+          padding: 0.18rem 0.42rem;
+          border-radius: 8px;
+          background: rgba(148, 163, 184, 0.12);
+          border: 1px solid rgba(148, 163, 184, 0.14);
+          color: #dbeafe;
+        }
+
+        .footer-note {
+          margin-top: 18px;
+          text-align: center;
+          color: #64748b;
+          font-size: 0.95rem;
+          animation: fadeIn 1.4s ease-out both;
+        }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(14px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes softFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+
+        @keyframes pulseDot {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.35); opacity: 0.78; }
+        }
+
+        @keyframes badgePulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.0); }
+          50% { box-shadow: 0 0 24px 0 rgba(6, 182, 212, 0.18); }
+        }
+
+        @keyframes softGlow {
+          0%, 100% { text-shadow: 0 0 0 rgba(103, 232, 249, 0.0); }
+          50% { text-shadow: 0 0 18px rgba(103, 232, 249, 0.18); }
+        }
+
+        @keyframes ambientShift {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          50% { transform: translate3d(0, -8px, 0) scale(1.02); }
+        }
+
+        @keyframes borderSweep {
+          0% { transform: translateX(-8%) translateY(0); }
+          50% { transform: translateX(8%) translateY(0); }
+          100% { transform: translateX(-8%) translateY(0); }
+        }
+
+        @keyframes cardRise {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 860px) {
+          .hero-grid,
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hero {
+            padding: 24px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation: none !important;
+            transition: none !important;
+            scroll-behavior: auto !important;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header class="header">
+          <div class="brand">
+            <div class="brand-badge">K8s</div>
+            <div>Gateway API Demo</div>
+          </div>
+          <div class="tag">
+            <span class="dot"></span>
+            Route active
+          </div>
+        </header>
+
+        <main class="hero">
+          <h1>
+            <span class="accent">Gateway API</span> request delivered successfully
+          </h1>
+          <p class="lead">
+            This page confirms that your request reached the expected backend through the Kubernetes Gateway API.
+            The listener, route attachment, and service forwarding path are all working as intended.
+          </p>
+
+          <div class="hero-grid">
+            <section class="card">
+              <h2>Routing status</h2>
+              <div class="status-list">
+                <div class="status-item">
+                  <span>Gateway</span>
+                  <strong class="ok">Ready</strong>
+                </div>
+                <div class="status-item">
+                  <span>HTTPRoute</span>
+                  <strong class="ok">Accepted</strong>
+                </div>
+                <div class="status-item">
+                  <span>Backend Service</span>
+                  <strong class="ok">Reachable</strong>
+                </div>
+                <div class="status-item">
+                  <span>Nginx</span>
+                  <strong class="ok">Serving content</strong>
+                </div>
+              </div>
+            </section>
+
+            <aside class="card">
+              <h2>Result</h2>
+              <p class="stat">200 OK</p>
+              <p class="subtle">
+                A simple landing page for demos, workshops, and platform showcases. Drop this file in
+                <code>/usr/share/nginx/html/index.html</code> and serve it directly.
+              </p>
+            </aside>
+          </div>
+        </main>
+
+        <section class="footer-grid">
+          <article class="mini">
+            <h2 class="mini-title">Cloud-native look</h2>
+            <p>
+              Minimal UI, strong spacing, and a restrained palette inspired by modern platform dashboards.
+            </p>
+          </article>
+
+          <article class="mini">
+            <h2 class="mini-title">Single static asset</h2>
+            <p>
+              No JavaScript, no external fonts, and no CDN dependencies. Easy to ship in any container image.
+            </p>
+          </article>
+
+          <article class="mini">
+            <h2 class="mini-title">Demo ready</h2>
+            <p>
+              Great base for adding hostname, namespace, pod name, headers, or environment-specific metadata later.
+            </p>
+          </article>
+        </section>
+
+        <div class="footer-note">
+          Kubernetes · Gateway API · Nginx
+        </div>
+      </div>
+    </body>
+    </html>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  namespace: default
+  labels:
+    demo: gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+      base: nginx
+  template:
+    metadata:
+      labels:
+        app: test
+        base: nginx
+    spec:
+      containers:
+        - name: ctn
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: page
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: page
+          configMap:
+            name: page
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    demo: gateway
+  name: test
+  namespace: default
+spec:
+  type: ClusterIP
+  ports: 
+    - port: 80
+      name: http
+  selector:
+    app: test
+    base: nginx
+# k get gateway,httproute,cm,deploy,svc,ns -A -l demo=gateway
+# k delete gateway,httproute,cm,deploy,svc,ns -A -l demo=gateway
