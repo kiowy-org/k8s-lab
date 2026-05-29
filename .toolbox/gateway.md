@@ -78,7 +78,7 @@ Acceder à votre WordPress !
 
 ## Ingress
 
-> [!warn]
+> [!warning]
 > [Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/) **Deprecated**
 > The Kubernetes project recommends using Gateway instead of Ingress. The Ingress API has been frozen.
 > This means that:
